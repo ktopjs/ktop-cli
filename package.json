@@ -1,0 +1,25 @@
+{
+  "name": "ktop-cli",
+  "version": "0.0.1-alpha.5",
+  "description": "### Quick Start",
+  "bin": {
+    "ktop": "bin/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "fs-extra": "^9.0.1",
+    "nunjucks": "^3.2.2",
+    "shelljs": "^0.8.4",
+    "sqlite3": "^5.0.0",
+    "unzip-stream": "^0.3.0"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
