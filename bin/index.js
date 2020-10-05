@@ -12,7 +12,7 @@ program.command('new <dirPath>')
   .action(require('./actions/new'))
 
 // db:migrate
-program.command('db:migrate [filename]')
+program.command('db:migrate')
   .description('run migration files')
   .requiredOption('-f, --file [string]', 'custom database config file', './config/database.config.js')
   .action(require('./actions/db/migrate'))
@@ -35,5 +35,26 @@ program.command('console')
   .alias('c')
   .description('console')
   .action(require('./actions/console'))
+
+program.command('generate <cmd>')
+  .alias('g')
+  .description('generate [controller|model|migration]')
+  .arguments('<cmd> [value]')
+  .requiredOption('-f, --file [string]', 'custom database config file', './config/database.config.js')
+  .action(function (cmd, value) {
+    let args = process.argv.slice(process.argv.indexOf(value) + 1, process.argv.length)
+    switch (cmd) {
+      case 'controller':
+        require('./actions/generate/controller')(value, args, this)
+        break
+      case 'model':
+        require('./actions/generate/model')(value, args, this)
+        break
+      case 'migration':
+        require('./actions/generate/migration')(value, args, this)
+        break
+      default:
+    }
+  })
 
 program.parse(process.argv)

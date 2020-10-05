@@ -1,11 +1,7 @@
 const shell = require('shelljs')
 const command = require('../../libs/command')
 
-module.exports = async function (filename, options) {
+module.exports = async function (options) {
   command.logCurrentCmd()
-  if (!filename) {
-    shell.exec(`npx knex --knexfile ${options.file} migrate:latest`)
-  } else {
-    shell.exec(`npx knex --knexfile ${options.file} migrate:make ${filename}`)
-  }
+  shell.exec(`npx knex --knexfile ${options.file} migrate:latest`)
 }

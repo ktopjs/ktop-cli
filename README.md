@@ -11,7 +11,7 @@ ktop new hello
 ### migrations & seeds
 ```bash
 # create a migration file
-$ ktop db:migrate createOrders
+$ ktop generate migration createOrders
 # run all migration files
 $ ktop db:migrate
 # rollback latest migrated migration file  
