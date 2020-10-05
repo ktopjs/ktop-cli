@@ -8,7 +8,7 @@ ktop new hello
 ```
 
 
-### migration
+### migrations & seeds
 ```bash
 # create a migration file
 $ ktop db:migrate createOrders
@@ -18,6 +18,12 @@ $ ktop db:migrate
 $ ktop db:rollback
 # run seed
 $ ktop db:seed
+```
 
+### console
+
+```bash
+# 进入控制台
+$ ktop c/console
 ```
 

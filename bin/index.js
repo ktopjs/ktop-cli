@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-repl-await
 const packageJson = require('../package')
 const { Command } = require('commander')
 const program = new Command()
@@ -28,5 +28,12 @@ program.command('db:seed')
   .description('run seed files')
   .requiredOption('-f, --file [string]', 'custom database config file', './config/database.config.js')
   .action(require('./actions/db/seed'))
+
+
+// console
+program.command('console')
+  .alias('c')
+  .description('console')
+  .action(require('./actions/console'))
 
 program.parse(process.argv)
