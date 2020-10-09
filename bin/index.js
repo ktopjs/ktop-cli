@@ -32,6 +32,11 @@ program.command('db:seed')
 
 
 // console
+program.command('routes')
+  .description('list all routes')
+  .action(require('./actions/routes'))
+
+// console
 program.command('console')
   .alias('c')
   .description('console')

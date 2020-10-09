@@ -28,3 +28,11 @@ $ ktop db:seed
 $ ktop c/console
 ```
 
+### routes
+
+```bash
+# list all routes
+$ ktop routes
+```
+
+
