@@ -3,8 +3,9 @@
 ### Quick Start
 
 ```bash
-npm i @ktopjs/ktop-cli -g
-ktop new hello
+npm i ktop-cli -g
+# ktop new projectName [--database sqlite3|mysql|pg|mssql|oracle] [--registry https://registry.npm.taobao.org]
+ktop new hello # default db sqlite3
 ```
 
 

@@ -9,6 +9,7 @@ program.command('new <dirPath>')
   .description('new a project with path')
   // // sqlite3, mysql, postgresql, mssql, oracle
   .requiredOption('-d, --database [string]', 'db(mysql, sqlite3...)', 'sqlite3')
+  .requiredOption('-r, --registry [string]', 'db(mysql, sqlite3...)', 'https://registry.npmjs.org')
   .action(require('./actions/new'))
 
 // db:migrate
