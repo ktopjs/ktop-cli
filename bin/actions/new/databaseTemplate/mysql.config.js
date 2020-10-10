@@ -1,6 +1,13 @@
 const packageJson = require('../package.json')
 const base = {
   client: 'mysql',
+  connection: {
+    charset: 'utf8mb4',
+    host : '127.0.0.1',
+    user : 'root',
+    password : '',
+    database : `${packageJson.name.replace(/-/g, '_')}_${process.env.NODE_ENV}`
+  },
   migrations: {
     directory: '../db/migrate',
     tableName: 'migrations'
@@ -13,29 +20,20 @@ const config = {
   development: {
     ...base,
     connection: {
-      host : '127.0.0.1',
-      user : 'root',
-      password : '',
-      database : `${packageJson.name.replace(/-/g, '_')}_development`
+      ...base.connection
     },
     debug: true
   },
   production: {
     ...base,
     connection: {
-      host : '127.0.0.1',
-      user : 'root',
-      password : '',
-      database : `${packageJson.name.replace(/-/g, '_')}_production`
+      ...base.connection
     }
   },
   test: {
     ...base,
     connection: {
-      host : '127.0.0.1',
-      user : 'root',
-      password : '',
-      database : `${packageJson.name.replace(/-/g, '_')}_test`
+      ...base.connection
     }
   }
 }

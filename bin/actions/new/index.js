@@ -22,34 +22,34 @@ module.exports = async function (dirPath, options) {
 
   shell.cd(fullPath)
   logger.info(`npm install ktop --save`)
-  shell.exec(`npm install ktop --save --registry=${options.registry}`)
+  shell.exec(`npm install ktop --save ${options.registry ? `--registry=${options.registry}` : ''}`)
   // db
   switch (options.database) {
     case 'sqlite3':
       logger.info(`npm install sqlite3 --save`)
-      shell.exec(`npm install sqlite3 --save --registry=${options.registry}`)
+      shell.exec(`npm install sqlite3 --save ${options.registry ? `--registry=${options.registry}` : ''}`)
       fs.writeFileSync(path.join(fullPath, 'config/database.config.js'), fs.readFileSync(path.join(__dirname, 'databaseTemplate/sqlite3.config.js'), 'utf8'), 'utf8')
       shell.exec(`echo *.sqlite >> ${path.join(fullPath, '.gitignore')}`)
       break
     case 'mysql':
       logger.info(`npm install mysql mysql2 --save`)
-      shell.exec(`npm install mysql mysql2 --save --registry=${options.registry}`)
+      shell.exec(`npm install mysql mysql2 --save ${options.registry ? `--registry=${options.registry}` : ''}`)
       fs.writeFileSync(path.join(fullPath, 'config/database.config.js'), fs.readFileSync(path.join(__dirname, 'databaseTemplate/mysql.config.js'), 'utf8'), 'utf8')
       break
     case 'pg':
     case 'postgresql':
       logger.info(`npm install pg --save`)
-      shell.exec(`npm install pg --save --registry=${options.registry}`)
+      shell.exec(`npm install pg --save ${options.registry ? `--registry=${options.registry}` : ''}`)
       fs.writeFileSync(path.join(fullPath, 'config/database.config.js'), fs.readFileSync(path.join(__dirname, 'databaseTemplate/postgresql.config.js'), 'utf8'), 'utf8')
       break
     case 'mssql':
       logger.info(`npm install mssql --save`)
-      shell.exec(`npm install mssql --save --registry=${options.registry}`)
+      shell.exec(`npm install mssql --save ${options.registry ? `--registry=${options.registry}` : ''}`)
       fs.writeFileSync(path.join(fullPath, 'config/database.config.js'), fs.readFileSync(path.join(__dirname, 'databaseTemplate/mssql.config.js'), 'utf8'), 'utf8')
       break
     case 'oracle':
       logger.info(`npm install oracledb --save`)
-      shell.exec(`npm install oracledb --save --registry=${options.registry}`)
+      shell.exec(`npm install oracledb --save ${options.registry ? `--registry=${options.registry}` : ''}`)
       fs.writeFileSync(path.join(fullPath, 'config/database.config.js'), fs.readFileSync(path.join(__dirname, 'databaseTemplate/oracle.config.js'), 'utf8'), 'utf8')
       break
     default:

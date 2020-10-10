@@ -1,7 +1,8 @@
 const path = require('path')
 const repl = require('repl')
-module.exports = async function () {
+module.exports = async function (options) {
   process.env.NODE_OPTIONS = `--experimental-repl-await`
+  process.env.NODE_ENV = options.env || process.env.NODE_ENV || 'development'
   const replInstance = repl.start({
     prompt: 'ktop> ',
     useGlobal: true,

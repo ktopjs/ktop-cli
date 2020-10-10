@@ -11,6 +11,10 @@ ktop new hello # default db sqlite3
 
 ### migrations & seeds
 ```bash
+# create db
+$ ktop db:create [-e development]
+# drop db
+$ ktop db:drop [-e development]
 # create a migration file
 $ ktop generate migration createOrders
 # run all migration files

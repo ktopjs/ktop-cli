@@ -1,6 +1,11 @@
 const path = require('path')
+const packageJson = require('../package.json')
 const base = {
   client: 'sqlite3',
+  useNullAsDefault: true,
+  connection: {
+    filename: path.join(__dirname, `${packageJson.name.replace(/-/g, '_')}_${process.env.NODE_ENV}.sqlite`)
+  },
   migrations: {
     directory: '../db/migrate',
     tableName: 'migrations'
@@ -13,24 +18,15 @@ const config = {
   development: {
     ...base,
     connection: {
-      filename: path.join(__dirname, 'data.development.sqlite')
+      ...base.connection
     },
-    useNullAsDefault: true,
     debug: true
   },
   production: {
-    ...base,
-    connection: {
-      filename: path.join(__dirname, 'data.production.sqlite')
-    },
-    useNullAsDefault: true
+    ...base
   },
   test: {
-    ...base,
-    connection: {
-      filename: path.join(__dirname, 'data.test.sqlite')
-    },
-    useNullAsDefault: true
+    ...base
   }
 }
 module.exports = config
