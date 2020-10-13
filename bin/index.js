@@ -1,4 +1,5 @@
 #!/usr/bin/env node --experimental-repl-await
+process.env.GLOBAL_DEFINE_KTOP_PROJECT_RUNNING_IN_CONSOLE = true
 const packageJson = require('../package')
 const { Command } = require('commander')
 const program = new Command()
@@ -50,6 +51,11 @@ program.command('db:seed')
 program.command('routes')
   .description('list all routes')
   .action(require('./actions/routes'))
+
+// jobs
+program.command('jobs')
+  .description('list all jobs')
+  .action(require('./actions/jobs'))
 
 // console
 program.command('console')

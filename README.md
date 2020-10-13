@@ -39,4 +39,9 @@ $ ktop c/console
 $ ktop routes
 ```
 
+### jobs
 
+```bash
+# list all jobs
+$ ktop jobs
+```
