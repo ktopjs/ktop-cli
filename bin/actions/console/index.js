@@ -14,4 +14,5 @@ module.exports = async function (options) {
   for (let key in application.models) {
     replInstance.context[key] = application.models[key]
   }
+  replInstance.context['$'] = application
 }
