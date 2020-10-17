@@ -1,5 +1,5 @@
 # ktop-cli
-
+supoort `node >= 10.0.0`
 ### Quick Start
 
 ```bash
@@ -44,4 +44,12 @@ $ ktop routes
 ```bash
 # list all jobs
 $ ktop jobs
+```
+
+### task
+```bash
+# generate a task
+ktop generate task demo
+# 执行task
+ktop task demo
 ```

@@ -57,6 +57,14 @@ program.command('jobs')
   .description('list all jobs')
   .action(require('./actions/jobs'))
 
+// job
+program.command('task <file>')
+  .description('run task')
+  .action(function (file) {
+    let args = process.argv.slice(process.argv.indexOf(file) + 1, process.argv.length)
+    require('./actions/task')(file, args, this)
+  })
+
 // console
 program.command('console')
   .alias('c')
@@ -66,8 +74,8 @@ program.command('console')
 
 program.command('generate <cmd>')
   .alias('g')
-  .description('generate [controller|model|migration]')
-  .arguments('<cmd> [value]')
+  .description('generate [controller|model|migration|job]')
+  .arguments('<arg> [value]')
   .requiredOption('-f, --file [string]', 'custom database config file', './config/database.config.js')
   .action(function (cmd, value) {
     let args = process.argv.slice(process.argv.indexOf(value) + 1, process.argv.length)
@@ -80,6 +88,9 @@ program.command('generate <cmd>')
         break
       case 'migration':
         require('./actions/generate/migration')(value, args, this)
+        break
+      case 'task':
+        require('./actions/generate/task')(value, args, this)
         break
       default:
     }
